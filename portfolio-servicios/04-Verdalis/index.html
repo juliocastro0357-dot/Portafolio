@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verdalis — Consultoría ambiental · Calculadora de huella de carbono</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{hoja:'#E6EFD8',forest:'#1F4D3A',leaf:'#7FB069',earth:'#C97B3A'},fontFamily:{sans:['Inter','system-ui','sans-serif'],serif:['Fraunces','Georgia','serif']}}}}</script>
+<style>
+input[type=range]{width:100%;accent-color:#1F4D3A}
+.blob{border-radius:62% 38% 55% 45%/48% 58% 42% 52%}
+.fld{width:100%;background:#fff;border:1.5px solid #cfdcbd;border-radius:1rem;padding:.7rem 1rem;outline:none;font:inherit}
+.fld:focus{border-color:#1F4D3A}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(2deg)}}
+.float{animation:float 7s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.float{animation:none}}
+</style>
+<style>
+.preview-ribbon{position:relative;z-index:9999;background:#211719;color:#fff4e8;border-bottom:1px solid rgba(255,255,255,.18);padding:9px 18px;text-align:center;font:600 11px/1.4 system-ui,sans-serif;letter-spacing:.04em}
+.preview-ribbon strong{color:#ffc39e}
+.preview-form-status{margin:12px 0 0;padding:12px 14px;border-radius:10px;background:#fff4dc;color:#382719;font:600 13px/1.5 system-ui,sans-serif}
+</style>
+</head>
+<body class="bg-hoja text-forest font-sans antialiased">
+<div class="preview-ribbon"><strong>VISTA DE PRUEBA</strong> · Prototipo visual; los formularios no envían información.</div>
+<header class="sticky top-0 z-30 bg-hoja/85 backdrop-blur">
+  <div class="mx-auto max-w-6xl px-5 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2 font-serif font-bold text-2xl"><svg width="32" height="32" viewBox="0 0 32 32"><path d="M6 26C6 12 14 5 27 5c0 13-7 21-17 21z" fill="#7FB069"/><path d="M6 26C12 18 17 14 24 9" stroke="#1F4D3A" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Verdalis</a>
+    <nav class="hidden md:flex gap-7 text-sm font-semibold"><a class="hover:text-earth" href="#calculadora">Calculadora</a><a class="hover:text-earth" href="#enfoque">Enfoque</a><a class="hover:text-earth" href="#servicios">Servicios</a></nav>
+    <a href="#auditoria" class="bg-forest text-hoja text-sm font-bold px-5 py-2.5 rounded-full hover:bg-earth transition">Pedir auditoría</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="mx-auto max-w-6xl px-5 pt-12 md:pt-20 pb-10 grid md:grid-cols-2 gap-10 items-center">
+  <div>
+    <p class="inline-block bg-leaf/40 rounded-full px-4 py-1.5 text-xs font-bold tracking-widest uppercase">Consultoría ambiental</p>
+    <h1 class="font-serif font-extrabold text-5xl md:text-7xl leading-[1.02] mt-5">Mide tu huella. <span class="text-earth">Reduce</span> con método.</h1>
+    <p class="mt-5 text-lg text-forest/80 max-w-lg">Ayudamos a las empresas a medir sus emisiones, fijar metas realistas y ejecutar planes de reducción verificables.</p>
+    <a href="#calculadora" class="inline-block mt-7 bg-earth text-white font-bold px-7 py-3.5 rounded-full hover:bg-forest transition">Calcular mi huella →</a>
+  </div>
+  <div class="relative h-80 md:h-[26rem]">
+    <div class="absolute inset-0 blob bg-forest"></div>
+    <div class="absolute -top-2 -right-2 w-32 h-32 blob bg-leaf float"></div>
+    <div class="absolute -bottom-3 left-6 w-24 h-24 blob bg-earth float" style="animation-delay:-3s"></div>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-hoja text-center px-8"><p class="font-serif font-extrabold text-7xl">−38%</p><p class="mt-2 text-hoja/85">reducción promedio de emisiones en el primer ciclo de trabajo con nuestros clientes*</p></div>
+  </div>
+</section>
+<svg viewBox="0 0 1440 80" class="w-full block" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40C240 0 480 80 720 40S1200 0 1440 40V80H0z" fill="#fff" fill-opacity=".55"/></svg>
+
+<section id="calculadora" class="bg-white/55 pb-16">
+  <div class="mx-auto max-w-6xl px-5">
+    <p class="text-earth font-bold text-sm uppercase tracking-widest">Calculadora</p>
+    <h2 class="font-serif font-extrabold text-4xl md:text-5xl mt-2 max-w-2xl">Huella de carbono de tu empresa, en minutos.</h2>
+    <p class="mt-3 text-forest/75 max-w-2xl">Ajusta los datos de operación anual. Calculamos tus emisiones por alcance y simulamos un plan de reducción.</p>
+    <div class="grid lg:grid-cols-5 gap-6 mt-10">
+      <div class="lg:col-span-2 space-y-5">
+        <div class="bg-white rounded-[2rem] p-6"><div class="grid grid-cols-1 gap-4"><div><label class="font-bold text-sm" for="sector">Sector</label><select id="sector" class="fld mt-1"></select></div><div id="g-emp" class="space-y-4"></div></div></div>
+        <div class="bg-white rounded-[2rem] p-6"><h3 class="font-serif font-bold text-xl mb-1"><span class="text-earth">Alcance 1</span> · Combustión directa</h3><div id="g-s1" class="space-y-4 mt-3"></div></div>
+        <div class="bg-white rounded-[2rem] p-6"><h3 class="font-serif font-bold text-xl mb-1"><span class="text-leaf">Alcance 2</span> · Electricidad</h3><div id="g-s2" class="space-y-4 mt-3"></div></div>
+        <div class="bg-white rounded-[2rem] p-6"><h3 class="font-serif font-bold text-xl mb-1"><span class="text-forest">Alcance 3</span> · Cadena de valor</h3><div id="g-s3" class="space-y-4 mt-3"></div></div>
+      </div>
+      <div class="lg:col-span-3 space-y-5">
+        <div class="bg-forest text-hoja rounded-[2rem] p-7">
+          <p class="text-hoja/70 text-sm">Huella anual estimada</p>
+          <p class="font-serif font-extrabold text-6xl md:text-7xl leading-none mt-1"><span id="r-tot">0</span><span class="text-2xl font-semibold ml-2">tCO₂e / año</span></p>
+          <div class="grid sm:grid-cols-3 gap-3 mt-6 text-sm">
+            <div class="bg-white/10 rounded-2xl p-4"><p class="text-hoja/60">Por empleado</p><p id="r-pe" class="font-bold text-xl mt-1"></p></div>
+            <div class="bg-white/10 rounded-2xl p-4"><p class="text-hoja/60">Referencia del sector</p><p id="r-bm" class="font-bold text-xl mt-1"></p></div>
+            <div class="bg-white/10 rounded-2xl p-4"><p class="text-hoja/60">Diagnóstico</p><p id="r-dg" class="font-bold text-xl mt-1"></p></div>
+          </div>
+          <div class="mt-5"><div class="relative h-3 bg-white/15 rounded-full"><div id="r-bar" class="absolute h-3 rounded-full bg-leaf"></div><div id="r-mk" class="absolute -top-1 w-1 h-5 bg-earth rounded"></div></div><p class="text-xs text-hoja/60 mt-2">La marca naranja indica el promedio del sector por empleado.</p></div>
+        </div>
+        <div class="grid md:grid-cols-5 gap-5">
+          <div class="md:col-span-2 bg-white rounded-[2rem] p-6 flex flex-col items-center">
+            <svg viewBox="0 0 36 36" class="w-40 h-40 -rotate-90" id="dn"></svg>
+            <ul class="mt-4 text-sm space-y-1 w-full" id="dn-l"></ul>
+          </div>
+          <div class="md:col-span-3 bg-white rounded-[2rem] p-6"><p class="font-bold mb-3">¿De dónde vienen tus emisiones?</p><div id="bars" class="space-y-3"></div></div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="bg-leaf/35 rounded-[2rem] p-6"><p class="text-sm font-bold">🌳 Para compensarla</p><p id="r-tree" class="font-serif font-extrabold text-3xl mt-1"></p><p class="text-sm text-forest/70">árboles necesarios por año (≈22 kg CO₂ c/u)</p></div>
+          <div class="bg-earth/20 rounded-[2rem] p-6"><p class="text-sm font-bold">🚗 Equivale a</p><p id="r-car" class="font-serif font-extrabold text-3xl mt-1"></p><p class="text-sm text-forest/70">autos circulando un año (≈4.6 t c/u)</p></div>
+        </div>
+        <div class="bg-white rounded-[2rem] p-7 border-2 border-leaf">
+          <h3 class="font-serif font-extrabold text-2xl">Plan de reducción</h3><p class="text-sm text-forest/70 mt-1">Mueve las palancas y mira cuánto podrías bajar.</p>
+          <div id="g-plan" class="space-y-4 mt-5"></div>
+          <div class="grid sm:grid-cols-3 gap-3 mt-6 text-sm">
+            <div class="bg-hoja rounded-2xl p-4"><p class="text-forest/60">Huella con plan</p><p id="p-new" class="font-bold text-xl mt-1"></p></div>
+            <div class="bg-hoja rounded-2xl p-4"><p class="text-forest/60">Reducción</p><p id="p-sav" class="font-bold text-xl mt-1 text-earth"></p></div>
+            <div class="bg-hoja rounded-2xl p-4"><p class="text-forest/60">Compensar remanente*</p><p id="p-off" class="font-bold text-xl mt-1"></p></div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-5"><button id="copy" class="bg-forest text-hoja font-bold px-6 py-3 rounded-full hover:bg-earth transition">Copiar reporte</button><a href="#auditoria" class="border-2 border-forest font-bold px-6 py-3 rounded-full hover:bg-forest hover:text-hoja transition">Solicitar auditoría</a></div>
+        </div>
+        <p class="text-xs text-forest/55">Cálculo referencial con factores de emisión promedio (electricidad México ≈ 0.438 kg CO₂/kWh). *Costo de compensación ilustrativo: $420 MXN/tCO₂e. No sustituye una verificación bajo ISO 14064 o GHG Protocol.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="enfoque" class="mx-auto max-w-6xl px-5 py-20">
+  <h2 class="font-serif font-extrabold text-4xl md:text-5xl max-w-xl">Un ciclo, tres pasos, resultados medibles.</h2>
+  <div class="grid md:grid-cols-3 gap-6 mt-10">
+    <article class="bg-white rounded-[2rem] p-7"><p class="font-serif text-5xl font-extrabold text-leaf">1</p><h3 class="font-bold text-xl mt-3">Medir</h3><p class="mt-2 text-forest/75">Inventario de emisiones por alcance con trazabilidad de datos.</p></article>
+    <article class="bg-white rounded-[2rem] p-7"><p class="font-serif text-5xl font-extrabold text-earth">2</p><h3 class="font-bold text-xl mt-3">Reducir</h3><p class="mt-2 text-forest/75">Plan priorizado por impacto y retorno: energía, flota, residuos y viajes.</p></article>
+    <article class="bg-white rounded-[2rem] p-7"><p class="font-serif text-5xl font-extrabold text-forest">3</p><h3 class="font-bold text-xl mt-3">Reportar</h3><p class="mt-2 text-forest/75">Informes alineados a estándares para clientes, inversionistas y certificaciones.</p></article>
+  </div>
+</section>
+
+<section id="servicios" class="bg-forest text-hoja py-20">
+  <div class="mx-auto max-w-6xl px-5">
+    <h2 class="font-serif font-extrabold text-4xl md:text-5xl">Servicios</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+      <div class="bg-white/10 rounded-[2rem] p-6"><p class="text-3xl">📊</p><h3 class="font-bold mt-3">Inventario de GEI</h3><p class="text-sm text-hoja/70 mt-1">Alcances 1, 2 y 3.</p></div>
+      <div class="bg-white/10 rounded-[2rem] p-6"><p class="text-3xl">⚡</p><h3 class="font-bold mt-3">Eficiencia energética</h3><p class="text-sm text-hoja/70 mt-1">Diagnóstico y energía limpia.</p></div>
+      <div class="bg-white/10 rounded-[2rem] p-6"><p class="text-3xl">♻️</p><h3 class="font-bold mt-3">Economía circular</h3><p class="text-sm text-hoja/70 mt-1">Residuos y materiales.</p></div>
+      <div class="bg-white/10 rounded-[2rem] p-6"><p class="text-3xl">📑</p><h3 class="font-bold mt-3">Reportes ESG</h3><p class="text-sm text-hoja/70 mt-1">GRI, CDP y reportes a medida.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="auditoria" class="mx-auto max-w-3xl px-5 py-20">
+  <form id="frm" class="bg-white rounded-[2.5rem] p-8 md:p-10 space-y-4" novalidate>
+    <h2 class="font-serif font-extrabold text-3xl">Solicita tu auditoría de huella</h2><p class="text-sm text-forest/70">Adjuntaremos tu cálculo actual para que partamos de tus datos.</p>
+    <div class="grid sm:grid-cols-2 gap-4"><div><label class="font-bold text-sm" for="f-n">Nombre</label><input id="f-n" class="fld mt-1" autocomplete="name"></div><div><label class="font-bold text-sm" for="f-c">Empresa</label><input id="f-c" class="fld mt-1" autocomplete="organization"></div></div>
+    <div><label class="font-bold text-sm" for="f-e">Correo</label><input id="f-e" type="email" class="fld mt-1" autocomplete="email"></div>
+    <p id="f-m" role="status" class="font-semibold text-sm"></p>
+    <button class="bg-earth text-white font-bold px-7 py-3.5 rounded-full hover:bg-forest transition">Enviar solicitud</button>
+  </form>
+</section>
+</main>
+<footer class="border-t border-forest/15 py-8 text-center text-xs text-forest/60">© <span id="yr"></span> Verdalis. Sitio de demostración con marca ficticia. *Cifra ilustrativa.</footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$('#yr').textContent=new Date().getFullYear();
+const nf=(n,d=1)=>n.toLocaleString('es-MX',{maximumFractionDigits:d,minimumFractionDigits:d}),mx=n=>n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0});
+const FX={glp:1.51,gn:1.95,gas:2.31,die:2.68,ele:.438,vc:.22,vl:1.5,res:.55,car:.17};
+const SECT={'Oficinas y servicios':3.2,'Manufactura':9.5,'Comercio':4.1,'Alimentos y bebidas':7.2,'Logística y transporte':12};
+const GR={emp:[{k:'emp',l:'Número de empleados',u:'',min:1,max:500,st:1,v:40}],
+ s1:[{k:'glp',l:'Gas LP',u:'L/mes',min:0,max:2000,st:10,v:150},{k:'gn',l:'Gas natural',u:'m³/mes',min:0,max:3000,st:10,v:0},{k:'gas',l:'Gasolina (flota)',u:'L/mes',min:0,max:5000,st:50,v:600},{k:'die',l:'Diésel (flota)',u:'L/mes',min:0,max:5000,st:50,v:300}],
+ s2:[{k:'ele',l:'Consumo eléctrico',u:'kWh/mes',min:0,max:60000,st:100,v:6500}],
+ s3:[{k:'vc',l:'Vuelos cortos (ida)',u:'por año',min:0,max:300,st:1,v:30},{k:'vl',l:'Vuelos largos (ida)',u:'por año',min:0,max:100,st:1,v:6},{k:'res',l:'Residuos generados',u:'kg/mes',min:0,max:10000,st:50,v:800},{k:'rec',l:'Residuos reciclados',u:'%',min:0,max:95,st:5,v:25},{k:'auto',l:'Personal que llega en auto',u:'%',min:0,max:100,st:5,v:60}],
+ plan:[{k:'ren',l:'Electricidad renovable',u:'%',min:0,max:100,st:5,v:40},{k:'fle',l:'Flota electrificada',u:'%',min:0,max:100,st:5,v:25},{k:'vue',l:'Menos vuelos',u:'%',min:0,max:60,st:5,v:20},{k:'recT',l:'Meta de reciclaje',u:'%',min:0,max:95,st:5,v:60},{k:'hom',l:'Menos traslados (home office)',u:'%',min:0,max:50,st:5,v:10}]};
+const V={};
+function field(f){V[f.k]=f.v;return`<div><div class="flex justify-between text-sm mb-1"><label for="i-${f.k}" class="font-semibold">${f.l}</label><b><span data-o="${f.k}">${f.v.toLocaleString('es-MX')}</span> <span class="font-normal text-forest/60">${f.u}</span></b></div><input id="i-${f.k}" data-f="${f.k}" type="range" min="${f.min}" max="${f.max}" step="${f.st}" value="${f.v}"></div>`}
+Object.entries(GR).forEach(([g,a])=>$('#g-'+g).innerHTML=a.map(field).join(''));
+$('#sector').innerHTML=Object.keys(SECT).map(s=>`<option>${s}</option>`).join('');
+const CAT=[['Gas (LP y natural)','#C97B3A'],['Flota vehicular','#C97B3A'],['Electricidad','#7FB069'],['Vuelos de negocio','#1F4D3A'],['Residuos','#1F4D3A'],['Traslado del personal','#1F4D3A']];
+function waste(rec){return V.res*12*FX.res*(1-.6*rec/100)/1000}
+function calc(){
+ const gas=(V.glp*FX.glp+V.gn*FX.gn)*12/1000,fle=(V.gas*FX.gas+V.die*FX.die)*12/1000,ele=V.ele*12*FX.ele/1000,vue=(V.vc*FX.vc+V.vl*FX.vl),res=waste(V.rec),com=V.emp*(V.auto/100)*15*2*220*FX.car/1000;
+ const arr=[gas,fle,ele,vue,res,com],tot=arr.reduce((a,b)=>a+b,0);
+ const rec=Math.max(V.recT,V.rec),pl=[gas,fle*(1-V.fle*.85/100),ele*(1-V.ren/100),vue*(1-V.vue/100),waste(rec),com*(1-V.hom/100)],ptot=pl.reduce((a,b)=>a+b,0);
+ return{arr,tot,s1:gas+fle,s2:ele,s3:vue+res+com,ptot,pl}}
+let last;
+function ui(){
+ const c=last=calc(),sec=$('#sector').value,bm=SECT[sec],pe=c.tot/V.emp;
+ $('#r-tot').textContent=nf(c.tot);$('#r-pe').textContent=nf(pe,2)+' t';$('#r-bm').textContent=nf(bm,1)+' t';
+ const ra=pe/bm,dg=ra<.85?'Mejor que el sector':ra<=1.15?'En el promedio':'Por encima del sector';
+ $('#r-dg').textContent=dg;$('#r-bar').style.width=Math.min(100,ra/2*100)+'%';$('#r-mk').style.left='50%';
+ const sc=[['Alcance 1',c.s1,'#C97B3A'],['Alcance 2',c.s2,'#7FB069'],['Alcance 3',c.s3,'#1F4D3A']];let off=25,h='<circle cx="18" cy="18" r="15.9155" fill="none" stroke="#e6efd8" stroke-width="5"/>';
+ sc.forEach(([n,v,col])=>{const p=c.tot?v/c.tot*100:0;h+=`<circle cx="18" cy="18" r="15.9155" fill="none" stroke="${col}" stroke-width="5" stroke-dasharray="${p} ${100-p}" stroke-dashoffset="${off-25}"/>`;off-=p});
+ $('#dn').innerHTML=h;
+ $('#dn-l').innerHTML=sc.map(([n,v,col])=>`<li class="flex justify-between"><span><i class="inline-block w-3 h-3 rounded-sm mr-2" style="background:${col}"></i>${n}</span><b>${nf(v)} t · ${c.tot?(v/c.tot*100).toFixed(0):0}%</b></li>`).join('');
+ const mxv=Math.max(...c.arr,.01);
+ $('#bars').innerHTML=CAT.map(([n,col],i)=>`<div><div class="flex justify-between text-sm"><span>${n}</span><b>${nf(c.arr[i])} t</b></div><div class="h-2.5 bg-hoja rounded-full mt-1"><div class="h-2.5 rounded-full" style="width:${c.arr[i]/mxv*100}%;background:${col}"></div></div></div>`).join('');
+ $('#r-tree').textContent=Math.round(c.tot/.022).toLocaleString('es-MX');$('#r-car').textContent=nf(c.tot/4.6,0);
+ const sv=c.tot-c.ptot;$('#p-new').textContent=nf(c.ptot)+' t';$('#p-sav').textContent=`−${nf(sv)} t (${c.tot?(sv/c.tot*100).toFixed(0):0}%)`;$('#p-off').textContent=mx(c.ptot*420);
+ $$('[data-o]').forEach(e=>e.textContent=V[e.dataset.o].toLocaleString('es-MX'));
+}
+document.addEventListener('input',e=>{const k=e.target.dataset&&e.target.dataset.f;if(k){V[k]=+e.target.value;ui()}});
+$('#sector').onchange=ui;
+function report(){const c=last;return`VERDALIS — Reporte de huella de carbono (estimación)\nSector: ${$('#sector').value} · Empleados: ${V.emp}\nHuella anual: ${nf(c.tot)} tCO2e (${nf(c.tot/V.emp,2)} t/empleado)\nAlcance 1: ${nf(c.s1)} t · Alcance 2: ${nf(c.s2)} t · Alcance 3: ${nf(c.s3)} t\nCon plan de reducción: ${nf(c.ptot)} t (−${nf(c.tot-c.ptot)} t)\nCompensación remanente estimada: ${mx(c.ptot*420)}`}
+$('#copy').onclick=e=>{const b=e.target,t=report(),ok=()=>{b.textContent='¡Copiado!';setTimeout(()=>b.textContent='Copiar reporte',2000)};
+ const fb=()=>{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(x){}a.remove()};
+ navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t).then(ok,fb):fb()};
+$('#frm').addEventListener('submit',e=>{e.preventDefault();const n=$('#f-n').value.trim(),m=$('#f-e').value.trim(),o=$('#f-m');
+ if(n.length<3||!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)){o.className='font-semibold text-sm text-rose-700';o.textContent='Escribe tu nombre y un correo válido.';return}
+ o.className='font-semibold text-sm text-forest';o.textContent=`Gracias, ${n.split(' ')[0]}. Solicitud registrada con folio VER-${Date.now().toString(36).slice(-5).toUpperCase()}. Partiremos de tu huella estimada de ${nf(last.tot)} tCO₂e.`;e.target.reset()});
+ui();
+</script>
+<script data-preview-protection>
+document.querySelectorAll('form').forEach(function(form){form.addEventListener('submit',function(event){event.preventDefault();var note=form.querySelector('.preview-form-status');if(!note){note=document.createElement('div');note.className='preview-form-status';note.setAttribute('role','status');note.textContent='Vista de demostración: no se envió información.';form.appendChild(note);}});});
+</script>
+</body>
+</html>

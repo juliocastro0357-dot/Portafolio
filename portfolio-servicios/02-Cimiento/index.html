@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cimiento Capital — Tu crédito hipotecario, con claridad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{navy:'#0B1F3A',azure:'#1E6FFF',sky:'#8FD3FF',mist:'#F2F7FF'},fontFamily:{sans:['Manrope','system-ui','sans-serif']}}}}</script>
+<style>
+body{background:linear-gradient(160deg,#0B1F3A 0%,#081529 100%);min-height:100vh}
+.glass{background:rgba(242,247,255,.07);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(242,247,255,.16);box-shadow:0 10px 40px rgba(0,0,0,.28)}
+input[type=range]{width:100%;accent-color:#1E6FFF}
+.fld{width:100%;background:rgba(242,247,255,.08);border:1px solid rgba(242,247,255,.2);border-radius:.75rem;padding:.7rem .9rem;color:#F2F7FF;outline:none}
+.fld:focus{border-color:#8FD3FF}.fld::placeholder{color:rgba(242,247,255,.45)}
+.chip{padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(242,247,255,.25);font-weight:600;font-size:.875rem;transition:.15s}
+.chip[aria-pressed=true]{background:#1E6FFF;border-color:#1E6FFF;color:#fff}
+.chip:hover{border-color:#8FD3FF}
+details>summary{cursor:pointer;list-style:none}details>summary::-webkit-details-marker{display:none}
+details[open] summary .pl{transform:rotate(45deg)}
+</style>
+<style>
+.preview-ribbon{position:relative;z-index:9999;background:#211719;color:#fff4e8;border-bottom:1px solid rgba(255,255,255,.18);padding:9px 18px;text-align:center;font:600 11px/1.4 system-ui,sans-serif;letter-spacing:.04em}
+.preview-ribbon strong{color:#ffc39e}
+.preview-form-status{margin:12px 0 0;padding:12px 14px;border-radius:10px;background:#fff4dc;color:#382719;font:600 13px/1.5 system-ui,sans-serif}
+</style>
+</head>
+<body class="text-mist font-sans antialiased">
+<div class="preview-ribbon"><strong>VISTA DE PRUEBA</strong> · Prototipo visual; los formularios no envían información.</div>
+<div class="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+  <div class="absolute -top-40 -left-32 w-[36rem] h-[36rem] rounded-full bg-azure/40 blur-3xl"></div>
+  <div class="absolute top-1/3 -right-40 w-[34rem] h-[34rem] rounded-full bg-sky/25 blur-3xl"></div>
+  <div class="absolute bottom-0 left-1/4 w-[30rem] h-[30rem] rounded-full bg-azure/25 blur-3xl"></div>
+</div>
+
+<header class="sticky top-0 z-30 glass !rounded-none !border-x-0 !border-t-0 !shadow-none">
+  <div class="mx-auto max-w-6xl px-5 h-16 flex items-center justify-between">
+    <a href="#top" aria-label="Cimiento Capital">
+      <svg viewBox="0 0 200 36" class="h-8 w-auto"><rect width="36" height="36" rx="10" fill="#1E6FFF"/><path d="M8 17l10-8 10 8v11H8z" fill="none" stroke="#F2F7FF" stroke-width="2.4" stroke-linejoin="round"/><rect x="15" y="20" width="6" height="8" fill="#8FD3FF"/><text x="46" y="16" font-family="Manrope,sans-serif" font-weight="800" font-size="16" fill="#F2F7FF">CIMIENTO</text><text x="46" y="30" font-family="Manrope,sans-serif" font-weight="600" font-size="9" letter-spacing="5" fill="#8FD3FF">CAPITAL</text></svg>
+    </a>
+    <nav class="hidden md:flex gap-7 text-sm font-semibold text-mist/80"><a class="hover:text-sky" href="#simulador">Simulador</a><a class="hover:text-sky" href="#ventajas">Ventajas</a><a class="hover:text-sky" href="#proceso">Proceso</a><a class="hover:text-sky" href="#faq">Preguntas</a></nav>
+    <a href="#solicitud" class="bg-azure hover:bg-sky hover:text-navy transition text-white text-sm font-bold px-5 py-2.5 rounded-xl">Pre-aprobación</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="mx-auto max-w-6xl px-5 pt-16 md:pt-24 pb-16 grid md:grid-cols-5 gap-10 items-center">
+  <div class="md:col-span-3">
+    <p class="inline-block glass rounded-full px-4 py-1.5 text-xs font-bold tracking-widest text-sky uppercase">Crédito hipotecario</p>
+    <h1 class="mt-6 text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.02]">Tu hogar, calculado con <span class="text-sky">total claridad.</span></h1>
+    <p class="mt-6 text-lg text-mist/75 max-w-xl">Simula tu crédito, compara escenarios y descubre cuánto puedes ahorrar en intereses con pagos adicionales a capital. Sin letra chica.</p>
+    <div class="mt-8 flex flex-wrap gap-3"><a href="#simulador" class="bg-azure hover:bg-sky hover:text-navy transition text-white font-bold px-7 py-3.5 rounded-xl">Simular mi crédito</a><a href="#proceso" class="glass font-bold px-7 py-3.5 rounded-xl hover:border-sky transition">Cómo funciona</a></div>
+  </div>
+  <div class="md:col-span-2 glass rounded-3xl p-7">
+    <p class="text-sm text-mist/70">Tu cuota estimada</p>
+    <p id="h-pmt" class="text-5xl font-extrabold tracking-tight mt-1">—</p>
+    <p id="h-sub" class="text-sm text-sky mt-2"></p>
+    <div class="mt-6 h-px bg-white/15"></div>
+    <ul class="mt-5 space-y-3 text-sm text-mist/80"><li>✓ Tasa fija durante todo el plazo</li><li>✓ Prepagos sin penalización</li><li>✓ Respuesta de pre-aprobación en 24 h</li></ul>
+    <a href="#simulador" class="mt-6 block text-center bg-white/10 hover:bg-white/20 transition rounded-xl py-3 font-bold">Ajustar simulación ↓</a>
+  </div>
+</section>
+
+<section id="simulador" class="mx-auto max-w-6xl px-5 py-16">
+  <div class="mb-10"><p class="text-sky text-sm font-bold uppercase tracking-widest">Simulador</p><h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-2">Mueve los controles. Mira el resultado al instante.</h2></div>
+  <div class="grid lg:grid-cols-5 gap-6">
+    <div class="lg:col-span-2 glass rounded-3xl p-7 space-y-7 self-start">
+      <div><div class="flex justify-between text-sm mb-2"><label for="valor" class="font-semibold">Valor de la propiedad</label><b data-v="valor"></b></div><input id="valor" data-k="valor" type="range" min="500000" max="20000000" step="50000" value="3500000"></div>
+      <div><div class="flex justify-between text-sm mb-2"><label for="eng" class="font-semibold">Enganche</label><b data-v="eng"></b></div><input id="eng" data-k="eng" type="range" min="5" max="70" step="1" value="20"></div>
+      <div><p class="text-sm font-semibold mb-2">Plazo</p><div id="plazos" class="flex flex-wrap gap-2"></div></div>
+      <div><div class="flex justify-between text-sm mb-2"><label for="tasa" class="font-semibold">Tasa de interés anual</label><b data-v="tasa"></b></div><input id="tasa" data-k="tasa" type="range" min="6" max="18" step="0.05" value="10.5"></div>
+      <div><div class="flex justify-between text-sm mb-2"><label for="extra" class="font-semibold">Pago extra mensual a capital</label><b data-v="extra"></b></div><input id="extra" data-k="extra" type="range" min="0" max="20000" step="500" value="0"></div>
+      <div><label for="ingreso" class="text-sm font-semibold block mb-2">Ingreso mensual comprobable</label><input id="ingreso" data-k="ingreso" type="number" min="0" step="1000" value="45000" class="fld"></div>
+    </div>
+    <div class="lg:col-span-3 space-y-6">
+      <div class="glass rounded-3xl p-7">
+        <p class="text-sm text-mist/70">Pago mensual estimado</p>
+        <p id="o-pmt" class="text-5xl md:text-6xl font-extrabold tracking-tight">—</p>
+        <p id="o-extra" class="text-sm text-sky mt-1"></p>
+        <div class="grid sm:grid-cols-3 gap-3 mt-6 text-sm">
+          <div class="bg-white/5 rounded-2xl p-4"><p class="text-mist/60">Monto del crédito</p><p id="k-cred" class="font-bold text-lg mt-1"></p></div>
+          <div class="bg-white/5 rounded-2xl p-4"><p class="text-mist/60">Total de intereses</p><p id="k-int" class="font-bold text-lg mt-1"></p></div>
+          <div class="bg-white/5 rounded-2xl p-4"><p class="text-mist/60">Costo total</p><p id="k-tot" class="font-bold text-lg mt-1"></p></div>
+          <div class="bg-white/5 rounded-2xl p-4"><p class="text-mist/60">Enganche</p><p id="k-eng" class="font-bold text-lg mt-1"></p></div>
+          <div class="bg-white/5 rounded-2xl p-4"><p class="text-mist/60">Efectivo inicial*</p><p id="k-ini" class="font-bold text-lg mt-1"></p></div>
+          <div class="bg-white/5 rounded-2xl p-4"><p class="text-mist/60">Ingreso sugerido</p><p id="k-ing" class="font-bold text-lg mt-1"></p></div>
+        </div>
+        <p class="text-xs text-mist/50 mt-3">*Enganche + ~5% de gastos de escrituración. Ingreso sugerido: cuota ≤ 30% del ingreso.</p>
+        <div id="sema" class="mt-5 rounded-2xl p-4 text-sm font-semibold"></div>
+      </div>
+      <div class="grid md:grid-cols-5 gap-6">
+        <div class="md:col-span-2 glass rounded-3xl p-6 flex flex-col items-center">
+          <svg viewBox="0 0 36 36" class="w-40 h-40 -rotate-90"><circle cx="18" cy="18" r="15.9155" fill="none" stroke="#8FD3FF" stroke-width="4"/><circle id="dn" cx="18" cy="18" r="15.9155" fill="none" stroke="#1E6FFF" stroke-width="4" stroke-dasharray="50 50"/></svg>
+          <ul class="mt-4 text-sm space-y-1 w-full"><li class="flex justify-between"><span><i class="inline-block w-3 h-3 rounded-sm bg-azure mr-2"></i>Capital</span><b id="l-cap"></b></li><li class="flex justify-between"><span><i class="inline-block w-3 h-3 rounded-sm bg-sky mr-2"></i>Intereses</span><b id="l-int"></b></li></ul>
+        </div>
+        <div class="md:col-span-3 glass rounded-3xl p-6">
+          <p class="text-sm font-semibold mb-3">Saldo del crédito en el tiempo</p>
+          <svg id="chart" viewBox="-4 -4 608 212" class="w-full" role="img" aria-label="Gráfica de saldo"></svg>
+          <div class="flex justify-between text-xs text-mist/60 mt-1"><span>Año 0</span><span id="c-end"></span></div>
+          <p class="text-xs text-mist/50 mt-2"><span class="text-sky">—</span> con pago extra &nbsp; <span class="text-mist/60">- - -</span> sin pago extra</p>
+        </div>
+      </div>
+      <div id="save" class="glass rounded-3xl p-6 text-sm"></div>
+      <div class="glass rounded-3xl p-6 overflow-hidden">
+        <p class="font-semibold mb-3">Tabla de amortización <span class="text-mist/50 font-normal">(toca un año para ver los meses)</span></p>
+        <div class="overflow-x-auto max-h-96 overflow-y-auto"><table class="w-full text-sm min-w-[520px]"><thead class="text-left text-mist/60 sticky top-0 bg-[#0e2547]"><tr><th class="py-2">Periodo</th><th>Pagos</th><th>Capital</th><th>Intereses</th><th class="text-right">Saldo</th></tr></thead><tbody id="tb"></tbody></table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ventajas" class="mx-auto max-w-6xl px-5 py-16">
+  <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-10">Por qué elegir Cimiento</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <article class="glass rounded-3xl p-7"><p class="text-4xl">🏠</p><h3 class="text-xl font-bold mt-4">Tasa fija y transparente</h3><p class="text-mist/70 mt-2">Sabes desde el primer día cuánto pagarás cada mes y cuánto costará el crédito completo.</p></article>
+    <article class="glass rounded-3xl p-7"><p class="text-4xl">⚡</p><h3 class="text-xl font-bold mt-4">Pre-aprobación en 24 h</h3><p class="text-mist/70 mt-2">Solicitud 100% digital, sin filas ni papeleo innecesario. Un asesor te acompaña en cada paso.</p></article>
+    <article class="glass rounded-3xl p-7"><p class="text-4xl">📉</p><h3 class="text-xl font-bold mt-4">Prepagos sin castigo</h3><p class="text-mist/70 mt-2">Abona a capital cuando quieras y reduce el plazo o la cuota sin comisiones por pago anticipado.</p></article>
+  </div>
+</section>
+
+<section id="proceso" class="mx-auto max-w-6xl px-5 py-16">
+  <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-10">De la simulación a las llaves</h2>
+  <ol class="grid md:grid-cols-4 gap-6">
+    <li class="glass rounded-3xl p-6"><b class="text-sky text-3xl">01</b><h3 class="font-bold mt-3">Simula</h3><p class="text-sm text-mist/70 mt-1">Define monto, enganche y plazo.</p></li>
+    <li class="glass rounded-3xl p-6"><b class="text-sky text-3xl">02</b><h3 class="font-bold mt-3">Pre-aprueba</h3><p class="text-sm text-mist/70 mt-1">Envía tu solicitud en minutos.</p></li>
+    <li class="glass rounded-3xl p-6"><b class="text-sky text-3xl">03</b><h3 class="font-bold mt-3">Avalúo y notaría</h3><p class="text-sm text-mist/70 mt-1">Coordinamos avalúo y escrituración.</p></li>
+    <li class="glass rounded-3xl p-6"><b class="text-sky text-3xl">04</b><h3 class="font-bold mt-3">Recibe tus llaves</h3><p class="text-sm text-mist/70 mt-1">Firmas y dispersamos el crédito.</p></li>
+  </ol>
+</section>
+
+<section id="faq" class="mx-auto max-w-3xl px-5 py-16">
+  <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-8">Preguntas frecuentes</h2>
+  <div class="space-y-3">
+    <details class="glass rounded-2xl p-5"><summary class="flex justify-between font-bold">¿Qué enganche mínimo necesito?<span class="pl transition text-sky text-xl">+</span></summary><p class="mt-3 text-mist/70">En esta simulación puedes probar desde 5%. Un enganche mayor reduce tu cuota y el total de intereses.</p></details>
+    <details class="glass rounded-2xl p-5"><summary class="flex justify-between font-bold">¿Cómo se calcula la cuota?<span class="pl transition text-sky text-xl">+</span></summary><p class="mt-3 text-mist/70">Con el sistema de cuota fija (amortización francesa): cada mes pagas lo mismo, y con el tiempo una mayor parte va a capital.</p></details>
+    <details class="glass rounded-2xl p-5"><summary class="flex justify-between font-bold">¿Qué pasa si hago pagos extra?<span class="pl transition text-sky text-xl">+</span></summary><p class="mt-3 text-mist/70">Cada peso extra reduce el saldo, lo que baja los intereses futuros y acorta el plazo. El simulador te muestra el ahorro.</p></details>
+    <details class="glass rounded-2xl p-5"><summary class="flex justify-between font-bold">¿Las cifras son definitivas?<span class="pl transition text-sky text-xl">+</span></summary><p class="mt-3 text-mist/70">No. Son estimaciones de demostración; seguros, comisiones y la tasa final dependen de tu perfil y de la institución.</p></details>
+  </div>
+</section>
+
+<section id="solicitud" class="mx-auto max-w-3xl px-5 py-16">
+  <form id="frm" class="glass rounded-3xl p-8 space-y-4" novalidate>
+    <h2 class="text-3xl font-extrabold tracking-tight">Solicita tu pre-aprobación</h2>
+    <p class="text-mist/70 text-sm">Incluiremos tu simulación actual para que tu asesor parta de tus números.</p>
+    <div class="grid sm:grid-cols-2 gap-4"><div><label class="text-sm font-semibold" for="f-n">Nombre</label><input id="f-n" class="fld mt-1" autocomplete="name"></div><div><label class="text-sm font-semibold" for="f-e">Correo</label><input id="f-e" type="email" class="fld mt-1" autocomplete="email"></div></div>
+    <div><label class="text-sm font-semibold" for="f-t">Teléfono</label><input id="f-t" type="tel" class="fld mt-1" autocomplete="tel"></div>
+    <p id="f-msg" role="status" class="text-sm font-semibold"></p>
+    <button class="bg-azure hover:bg-sky hover:text-navy transition text-white font-bold px-7 py-3.5 rounded-xl">Enviar solicitud</button>
+  </form>
+</section>
+</main>
+<footer class="border-t border-white/10 mt-10"><div class="mx-auto max-w-6xl px-5 py-8 text-xs text-mist/50">© <span id="yr"></span> Cimiento Capital. Sitio de demostración con marca ficticia. Las simulaciones son estimaciones informativas y no constituyen una oferta de crédito.</div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const M=n=>n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0});
+$('#yr').textContent=new Date().getFullYear();
+const st={valor:3500000,eng:20,plazo:20,tasa:10.5,extra:0,ingreso:45000},open=new Set();
+function amort(P,i,n,extra){const pmt=i?P*i/(1-Math.pow(1+i,-n)):P/n;let b=P,t=0,m=0;const bal=[P],rows=[];
+ while(b>0.5&&m<n){m++;const it=b*i;let cap=pmt-it+extra;if(cap>b)cap=b;b-=cap;t+=it;rows.push({m,it,cap,pago:it+cap,b});bal.push(b)}
+ return{pmt,t,m,bal,rows}}
+function calc(){const V=st.valor,eng=V*st.eng/100,P=V-eng,n=st.plazo*12,i=st.tasa/1200;
+ const base=amort(P,i,n,0),pl=amort(P,i,n,st.extra);return{V,eng,P,n,i,base,pl,gastos:V*.05,total:P+pl.t}}
+$('#plazos').innerHTML=[5,10,15,20,25,30].map(y=>`<button type="button" class="chip" data-plazo="${y}" aria-pressed="false">${y} años</button>`).join('');
+const sum=(a,k)=>a.reduce((s,r)=>s+r[k],0);
+function path(a,n){return a.map((v,k)=>`${k?'L':'M'}${(k/n*600).toFixed(1)},${(200-v/a[0]*200).toFixed(1)}`).join('')}
+function ui(){
+ const c=calc(),{base,pl}=c,pm=base.pmt+st.extra;
+ $('#o-pmt').textContent=M(pm);$('#h-pmt').textContent=M(pm);
+ $('#o-extra').textContent=st.extra?`Incluye ${M(st.extra)} de pago extra a capital`:'Cuota fija mensual (capital + intereses)';
+ $('#h-sub').textContent=`Enganche ${st.eng}% · ${st.plazo} años · tasa ${st.tasa.toFixed(2)}%`;
+ $('[data-v=valor]').textContent=M(st.valor);$('[data-v=eng]').textContent=`${st.eng}% · ${M(c.eng)}`;$('[data-v=tasa]').textContent=st.tasa.toFixed(2)+'%';$('[data-v=extra]').textContent=M(st.extra);
+ $('#k-cred').textContent=M(c.P);$('#k-eng').textContent=M(c.eng);$('#k-int').textContent=M(pl.t);$('#k-tot').textContent=M(c.total);$('#k-ini').textContent=M(c.eng+c.gastos);$('#k-ing').textContent=M(pm/.3);
+ $$('[data-plazo]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.plazo===st.plazo));
+ const r=st.ingreso?pm/st.ingreso*100:0,sm=$('#sema');
+ if(!st.ingreso){sm.className='mt-5 rounded-2xl p-4 text-sm font-semibold bg-white/5';sm.textContent='Ingresa tu ingreso mensual para evaluar la capacidad de pago.'}
+ else if(r<=30){sm.className='mt-5 rounded-2xl p-4 text-sm font-semibold bg-emerald-400/15 text-emerald-300';sm.textContent=`Capacidad de pago cómoda: la cuota es ${r.toFixed(0)}% de tu ingreso.`}
+ else if(r<=40){sm.className='mt-5 rounded-2xl p-4 text-sm font-semibold bg-amber-400/15 text-amber-300';sm.textContent=`Capacidad ajustada: la cuota es ${r.toFixed(0)}% de tu ingreso. Considera más enganche o más plazo.`}
+ else{sm.className='mt-5 rounded-2xl p-4 text-sm font-semibold bg-rose-400/15 text-rose-300';sm.textContent=`Carga alta: la cuota es ${r.toFixed(0)}% de tu ingreso. Ajusta enganche, plazo o monto.`}
+ const pc=c.P/c.total*100;$('#dn').setAttribute('stroke-dasharray',`${pc} ${100-pc}`);$('#l-cap').textContent=pc.toFixed(0)+'%';$('#l-int').textContent=(100-pc).toFixed(0)+'%';
+ const W=600,gl=[0,.5,1].map(f=>`<line x1="0" x2="600" y1="${f*200}" y2="${f*200}" stroke="rgba(242,247,255,.12)"/>`).join('');
+ $('#chart').innerHTML=gl+`<path d="${path(pl.bal,c.n)}L${(pl.m/c.n*600).toFixed(1)},200L0,200Z" fill="rgba(30,111,255,.3)"/>`+(st.extra?`<path d="${path(base.bal,c.n)}" fill="none" stroke="rgba(242,247,255,.5)" stroke-dasharray="5 5" stroke-width="2"/>`:'')+`<path d="${path(pl.bal,c.n)}" fill="none" stroke="#8FD3FF" stroke-width="3"/>`;
+ $('#c-end').textContent=`Año ${st.plazo}`;
+ $('#save').innerHTML=st.extra?`<p class="font-bold text-sky">Con ${M(st.extra)} extra al mes:</p><p class="mt-1">Ahorras <b>${M(base.t-pl.t)}</b> en intereses y terminas <b>${c.n-pl.m} meses antes</b> (${((c.n-pl.m)/12).toFixed(1)} años).</p>`:`<p class="text-mist/70"><b class="text-sky">Tip:</b> agrega un pago extra mensual a capital y mira cuánto interés te ahorras y cuántos años recortas.</p>`;
+ let h='';const ny=Math.ceil(pl.rows.length/12);
+ for(let y=0;y<ny;y++){const rs=pl.rows.slice(y*12,y*12+12),isO=open.has(y);
+  h+=`<tr data-y="${y}" class="border-t border-white/10 cursor-pointer hover:bg-white/5 ${isO?'bg-white/5':''}"><td class="py-2 font-semibold">${isO?'▾':'▸'} Año ${y+1}</td><td>${M(sum(rs,'pago'))}</td><td>${M(sum(rs,'cap'))}</td><td>${M(sum(rs,'it'))}</td><td class="text-right">${M(rs[rs.length-1].b)}</td></tr>`;
+  if(isO)h+=rs.map(x=>`<tr class="text-mist/60 text-xs"><td class="py-1 pl-6">Mes ${x.m}</td><td>${M(x.pago)}</td><td>${M(x.cap)}</td><td>${M(x.it)}</td><td class="text-right">${M(x.b)}</td></tr>`).join('')}
+ $('#tb').innerHTML=h;
+}
+$$('[data-k]').forEach(el=>el.addEventListener('input',()=>{st[el.dataset.k]=Math.max(0,+el.value||0);ui()}));
+$$('[data-plazo]').forEach(b=>b.onclick=()=>{st.plazo=+b.dataset.plazo;open.clear();ui()});
+$('#tb').addEventListener('click',e=>{const t=e.target.closest('[data-y]');if(!t)return;const y=+t.dataset.y;open.has(y)?open.delete(y):open.add(y);ui()});
+$('#frm').addEventListener('submit',e=>{e.preventDefault();const n=$('#f-n').value.trim(),m=$('#f-e').value.trim(),o=$('#f-msg');
+ if(n.length<3||!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)){o.className='text-sm font-semibold text-rose-300';o.textContent='Escribe tu nombre y un correo válido.';return}
+ const c=calc();o.className='text-sm font-semibold text-sky';o.textContent=`Solicitud registrada, ${n.split(' ')[0]}. Folio CIM-${Date.now().toString(36).slice(-5).toUpperCase()}. Tu asesor revisará una propiedad de ${M(c.V)} con cuota de ${M(c.base.pmt+st.extra)}.`;e.target.reset()});
+ui();
+</script>
+<script data-preview-protection>
+document.querySelectorAll('form').forEach(function(form){form.addEventListener('submit',function(event){event.preventDefault();var note=form.querySelector('.preview-form-status');if(!note){note=document.createElement('div');note.className='preview-form-status';note.setAttribute('role','status');note.textContent='Vista de demostración: no se envió información.';form.appendChild(note);}});});
+</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Talentia — Bolsa de trabajo con matching inteligente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{lila:'#F5F3FF',violet:'#6C4DFF',ink:'#1E1B3A',amber:'#FFB020'},fontFamily:{sans:['"Plus Jakarta Sans"','system-ui','sans-serif']}}}}</script>
+<style>
+dialog::backdrop{background:rgba(30,27,58,.6);backdrop-filter:blur(3px)}
+.inp{width:100%;border:1.5px solid #e4def9;border-radius:1rem;padding:.65rem .9rem;background:#fff;outline:none;font:inherit}
+.inp:focus{border-color:#6C4DFF}
+.sk{border:1.5px solid #e4def9;border-radius:999px;padding:.25rem .7rem;font-size:.78rem;font-weight:600;transition:.12s;background:#fff}
+button.sk:hover{border-color:#6C4DFF}
+button.sk[aria-pressed=true]{background:#6C4DFF;border-color:#6C4DFF;color:#fff}
+.hit{background:#ece8ff;border-color:#6C4DFF;color:#4a32d4}
+</style>
+<style>
+.preview-ribbon{position:relative;z-index:9999;background:#211719;color:#fff4e8;border-bottom:1px solid rgba(255,255,255,.18);padding:9px 18px;text-align:center;font:600 11px/1.4 system-ui,sans-serif;letter-spacing:.04em}
+.preview-ribbon strong{color:#ffc39e}
+.preview-form-status{margin:12px 0 0;padding:12px 14px;border-radius:10px;background:#fff4dc;color:#382719;font:600 13px/1.5 system-ui,sans-serif}
+</style>
+</head>
+<body class="bg-lila text-ink font-sans antialiased">
+<div class="preview-ribbon"><strong>VISTA DE PRUEBA</strong> · Prototipo visual; los formularios no envían información.</div>
+<header class="sticky top-0 z-30 bg-lila/85 backdrop-blur border-b border-violet/10">
+  <div class="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-2 font-extrabold text-xl tracking-tight"><span class="w-9 h-9 rounded-xl bg-violet text-white grid place-items-center">T</span>Talentia</a>
+    <div class="flex items-center gap-2 text-sm font-bold">
+      <button id="b-sav" class="px-4 py-2 rounded-full bg-white border border-violet/15 hover:border-violet transition">♥ Guardadas <span id="n-sav" class="text-violet">0</span></button>
+      <span class="hidden sm:inline px-4 py-2 rounded-full bg-amber/30">Postulaciones <span id="n-app">0</span></span>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="mx-auto max-w-7xl px-5 pb-20">
+<section class="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4 pt-8" aria-label="Presentación">
+  <div class="col-span-2 md:row-span-2 rounded-[2rem] bg-violet text-white p-8 md:p-10 flex flex-col justify-between min-h-[320px]">
+    <p class="text-xs font-bold tracking-widest uppercase opacity-80">Bolsa de trabajo</p>
+    <div><h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02]">Encuentra el trabajo que <span class="text-amber">sí encaja</span> contigo.</h1>
+    <p class="mt-4 opacity-85 max-w-md">Filtra por lo que importa y deja que el matching calcule tu compatibilidad con cada vacante.</p>
+    <a href="#tablero" class="inline-block mt-6 bg-white text-violet font-bold px-6 py-3 rounded-full hover:bg-amber hover:text-ink transition">Explorar vacantes →</a></div>
+  </div>
+  <div class="rounded-[2rem] bg-amber p-6 flex flex-col justify-between"><p class="text-sm font-bold">Vacantes activas</p><p class="text-6xl font-extrabold tracking-tighter">48</p></div>
+  <div class="rounded-[2rem] bg-white p-6 flex flex-col justify-between border border-violet/10"><p class="text-sm font-bold text-violet">Áreas</p><p class="text-6xl font-extrabold tracking-tighter">8</p></div>
+  <div class="col-span-2 rounded-[2rem] bg-ink text-white p-6 flex items-center gap-5"><div class="w-16 h-16 shrink-0 rounded-2xl bg-violet grid place-items-center text-3xl">⚡</div><div><p class="font-extrabold text-lg">Matching inteligente</p><p class="text-sm opacity-75">Marca tus habilidades y ordena por compatibilidad.</p></div></div>
+</section>
+
+<section id="tablero" class="mt-14 grid lg:grid-cols-[330px_1fr] gap-6 items-start">
+  <aside class="space-y-4 lg:sticky lg:top-20">
+    <div class="bg-white rounded-[2rem] p-6 border border-violet/10">
+      <h2 class="font-extrabold text-lg">Mi perfil</h2>
+      <label class="text-xs font-bold text-violet uppercase tracking-wide block mt-3 mb-1" for="p-lvl">Nivel actual</label>
+      <select id="p-lvl" class="inp"></select>
+      <p class="text-xs font-bold text-violet uppercase tracking-wide mt-4 mb-2">Mis habilidades <span id="p-n" class="text-ink/50"></span></p>
+      <div id="p-sk" class="flex flex-wrap gap-1.5 max-h-56 overflow-y-auto pr-1"></div>
+      <button id="p-clr" class="mt-3 text-xs font-bold text-ink/50 hover:text-violet">Limpiar habilidades</button>
+    </div>
+    <div class="bg-white rounded-[2rem] p-6 border border-violet/10 space-y-4">
+      <div class="flex justify-between items-center"><h2 class="font-extrabold text-lg">Filtros</h2><button id="f-clr" class="text-xs font-bold text-violet">Limpiar</button></div>
+      <div><label class="text-xs font-bold text-violet uppercase tracking-wide" for="q">Buscar</label><input id="q" class="inp mt-1" placeholder="Puesto, empresa, habilidad…"></div>
+      <div><p class="text-xs font-bold text-violet uppercase tracking-wide mb-2">Área</p><div id="f-area" class="space-y-1.5"></div></div>
+      <div><p class="text-xs font-bold text-violet uppercase tracking-wide mb-2">Modalidad</p><div id="f-mod" class="space-y-1.5"></div></div>
+      <div><p class="text-xs font-bold text-violet uppercase tracking-wide mb-2">Nivel</p><div id="f-lvl" class="space-y-1.5"></div></div>
+      <div><label class="text-xs font-bold text-violet uppercase tracking-wide" for="f-city">Ciudad</label><select id="f-city" class="inp mt-1"></select></div>
+      <div><div class="flex justify-between"><label class="text-xs font-bold text-violet uppercase tracking-wide" for="f-sal">Sueldo mínimo</label><b id="f-salv" class="text-sm"></b></div><input id="f-sal" type="range" min="20000" max="140000" step="5000" value="20000" class="w-full accent-violet"></div>
+      <div><label class="text-xs font-bold text-violet uppercase tracking-wide" for="f-day">Publicado</label><select id="f-day" class="inp mt-1"><option value="0">En cualquier momento</option><option value="7">Últimos 7 días</option><option value="14">Últimos 14 días</option><option value="30">Últimos 30 días</option></select></div>
+    </div>
+  </aside>
+  <div>
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <p id="count" class="font-bold"></p>
+      <label class="flex items-center gap-2 text-sm font-semibold">Ordenar por <select id="sort" class="inp !w-auto !py-2"><option value="rel">Relevancia</option><option value="comp">Compatibilidad</option><option value="sal">Sueldo</option><option value="rec">Más recientes</option></select></label>
+    </div>
+    <div id="grid" class="grid md:grid-cols-2 gap-4"></div>
+    <div class="text-center mt-8"><button id="more" class="bg-ink text-white font-bold px-8 py-3 rounded-full hover:bg-violet transition">Mostrar más vacantes</button></div>
+  </div>
+</section>
+</main>
+
+<dialog id="dlg" class="rounded-[2rem] p-0 w-[min(92vw,580px)] text-ink"><div id="dbody" class="p-7"></div></dialog>
+<footer class="border-t border-violet/10 py-8 text-center text-xs text-ink/50">© <span id="yr"></span> Talentia. Sitio de demostración: empresas, vacantes y datos ficticios.</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const nrm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+$('#yr').textContent=new Date().getFullYear();
+const H=(a,b)=>{let h=(Math.imul(a+1,374761393)+Math.imul(b+7,668265263))>>>0;h=Math.imul(h^(h>>>13),1274126177)>>>0;return(h^(h>>>16))>>>0};
+const AREAS={
+'Tecnología':{t:['Desarrollador/a Full Stack','Ingeniero/a de Datos','Analista de Ciberseguridad','Product Manager'],s:['JavaScript','Python','SQL','AWS','React','Docker'],b:42000},
+'Finanzas':{t:['Analista Financiero/a','Contador/a Corporativo','Controller','Analista de Riesgos'],s:['Excel','SAP','NIF/IFRS','Power BI','Auditoría','Presupuestos'],b:34000},
+'Marketing':{t:['Especialista SEO','Community Manager','Gerente de Marca','Analista de Growth'],s:['SEO','Google Ads','Analytics','Copywriting','CRM','Meta Ads'],b:30000},
+'Ventas':{t:['Ejecutivo/a de Cuentas','Business Developer','Key Account Manager','SDR'],s:['Negociación','CRM','Prospección','Inglés','Cierre','Presentaciones'],b:28000},
+'Operaciones':{t:['Coordinador/a de Logística','Jefe/a de Planta','Analista de Procesos','Comprador/a'],s:['Lean','SAP','Logística','Excel','Seis Sigma','Inventarios'],b:32000},
+'Diseño':{t:['Diseñador/a UX/UI','Diseñador/a Gráfico','Motion Designer','UX Researcher'],s:['Figma','Adobe CC','Prototipado','Design Systems','Research','After Effects'],b:33000},
+'Recursos Humanos':{t:['Reclutador/a IT','Generalista de RH','Analista de Compensaciones','HRBP'],s:['Reclutamiento','Nómina','Legislación laboral','Clima laboral','Excel','Entrevistas'],b:29000},
+'Salud':{t:['Coordinador/a Clínico','Enfermero/a Especialista','Analista de Calidad','Gerente de Farmacia'],s:['Atención al paciente','Gestión hospitalaria','Calidad','Excel','Inglés','Normatividad'],b:27000}};
+const AR=Object.keys(AREAS),MODS=['Presencial','Híbrido','Remoto'],LV=['Junior','Semi Senior','Senior','Dirección'],LM={'Junior':.7,'Semi Senior':1,'Senior':1.45,'Dirección':2.2};
+const CITIES=['CDMX','Guadalajara','Monterrey','Querétaro','Tijuana','Mérida','Puebla'],COMP=['Nexora','Altavía','Grupo Pacífica','Kuaro','Mirador Labs','Solvia','Terraza Foods','Ondina Pharma','Vértice','Cobalto Digital','Áureo Retail','Brújula Logistics'];
+const JOBS=[];
+for(let i=0;i<48;i++){const ar=AR[H(i,1)%8],A=AREAS[ar],r=H(i,5)%10,lv=LV[r<3?0:r<7?1:r<9?2:3],st=H(i,6)%6,sk=[0,1,2,3].map(j=>A.s[(st+j)%6]),mn=Math.round(A.b*LM[lv]*(.9+H(i,7)%25/100)/500)*500;
+ JOBS.push({id:i,ar,t:A.t[H(i,2)%4],co:COMP[H(i,3)%12],city:CITIES[H(i,4)%7],mod:MODS[H(i,8)%3],lv,s:sk,min:mn,max:Math.round(mn*1.3/500)*500,d:H(i,9)%35})}
+const ALLSK=[...new Set(Object.values(AREAS).flatMap(a=>a.s))].sort((a,b)=>a.localeCompare(b,'es'));
+const F={q:'',areas:new Set(),mods:new Set(),lvls:new Set(),city:'',sal:20000,days:0,fav:false,sort:'rel'},P={sk:new Set(),lvl:'Semi Senior'},SAV=new Set(),APP=new Set(),PAGE=8;let shown=PAGE;
+const money=n=>'$'+n.toLocaleString('es-MX');
+
+function box(id,arr,set){$(id).innerHTML=arr.map(x=>`<label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" value="${esc(x)}" class="accent-[#6C4DFF] w-4 h-4">${esc(x)}</label>`).join('');
+ $(id).onchange=e=>{e.target.checked?set.add(e.target.value):set.delete(e.target.value);shown=PAGE;draw()}}
+box('#f-area',AR,F.areas);box('#f-mod',MODS,F.mods);box('#f-lvl',LV,F.lvls);
+$('#f-city').innerHTML='<option value="">Todas</option>'+CITIES.map(c=>`<option>${c}</option>`).join('');
+$('#p-lvl').innerHTML=LV.map(l=>`<option ${l===P.lvl?'selected':''}>${l}</option>`).join('');
+$('#p-sk').innerHTML=ALLSK.map(s=>`<button type="button" class="sk" aria-pressed="false" data-sk="${esc(s)}">${esc(s)}</button>`).join('');
+
+function cm(j){if(!P.sk.size)return null;const h=j.s.filter(x=>P.sk.has(x)).length,d=Math.abs(LV.indexOf(j.lv)-LV.indexOf(P.lvl));return Math.round(h/j.s.length*75+(d===0?25:d===1?12:0))}
+function list(){const q=nrm(F.q.trim());
+ let l=JOBS.filter(j=>(!q||nrm(j.t+' '+j.co+' '+j.ar+' '+j.s.join(' ')).includes(q))&&(!F.areas.size||F.areas.has(j.ar))&&(!F.mods.size||F.mods.has(j.mod))&&(!F.lvls.size||F.lvls.has(j.lv))&&(!F.city||j.city===F.city)&&j.max>=F.sal&&(!F.days||j.d<=F.days)&&(!F.fav||SAV.has(j.id)));
+ const c=j=>cm(j)??-1;
+ if(F.sort==='comp'||(F.sort==='rel'&&P.sk.size))l.sort((a,b)=>c(b)-c(a)||a.d-b.d);
+ else if(F.sort==='sal')l.sort((a,b)=>b.max-a.max);else l.sort((a,b)=>a.d-b.d);
+ return l}
+function card(j){const m=cm(j),col=['#6C4DFF','#FFB020','#1E1B3A'][j.id%3],tx=j.id%3===1?'#1E1B3A':'#fff',
+ badge=m===null?'':`<span class="text-xs font-extrabold px-3 py-1 rounded-full ${m>=75?'bg-violet text-white':m>=50?'bg-amber text-ink':'bg-ink/10 text-ink'}">${m}% match</span>`;
+ return`<article class="bg-white rounded-[2rem] p-6 border border-violet/10 hover:shadow-xl hover:shadow-violet/10 transition flex flex-col">
+ <div class="flex items-start gap-3"><div class="w-12 h-12 shrink-0 rounded-2xl grid place-items-center font-extrabold text-lg" style="background:${col};color:${tx}">${esc(j.co[0])}</div>
+ <div class="min-w-0 flex-1"><h3 class="font-extrabold leading-tight">${esc(j.t)}</h3><p class="text-sm text-ink/60">${esc(j.co)} · ${esc(j.city)}</p></div>
+ <button data-sav="${j.id}" aria-pressed="${SAV.has(j.id)}" aria-label="Guardar vacante" class="text-2xl leading-none ${SAV.has(j.id)?'text-violet':'text-ink/25 hover:text-violet'}">${SAV.has(j.id)?'♥':'♡'}</button></div>
+ <div class="flex flex-wrap gap-1.5 mt-4 text-xs font-bold"><span class="px-3 py-1 rounded-full bg-lila">${j.mod}</span><span class="px-3 py-1 rounded-full bg-lila">${j.lv}</span><span class="px-3 py-1 rounded-full bg-lila">${esc(j.ar)}</span></div>
+ <p class="mt-4 font-extrabold text-lg">${money(j.min)} – ${money(j.max)} <span class="text-xs font-semibold text-ink/50">/ mes</span></p>
+ <div class="flex flex-wrap gap-1.5 mt-3">${j.s.map(s=>`<span class="sk ${P.sk.has(s)?'hit':''}">${esc(s)}</span>`).join('')}</div>
+ <div class="flex items-center justify-between mt-5 pt-4 border-t border-violet/10"><div class="flex items-center gap-2">${badge}<span class="text-xs text-ink/50">${j.d===0?'Hoy':j.d===1?'Ayer':'Hace '+j.d+' días'}</span></div>
+ <button data-open="${j.id}" class="text-sm font-bold ${APP.has(j.id)?'text-ink/50':'text-violet hover:underline'}">${APP.has(j.id)?'Postulado ✓':'Ver y postular →'}</button></div></article>`}
+function draw(){const l=list();
+ $('#count').textContent=`${l.length} vacante${l.length===1?'':'s'} encontrada${l.length===1?'':'s'}${F.fav?' (solo guardadas)':''}`;
+ $('#grid').innerHTML=l.length?l.slice(0,shown).map(card).join(''):'<div class="md:col-span-2 bg-white rounded-[2rem] p-10 text-center border border-violet/10"><p class="font-extrabold text-xl">Sin resultados</p><p class="text-ink/60 mt-1">Prueba quitando algún filtro.</p></div>';
+ $('#more').style.display=l.length>shown?'':'none';
+ $('#n-sav').textContent=SAV.size;$('#n-app').textContent=APP.size;$('#f-salv').textContent=money(F.sal);
+ $('#p-n').textContent=P.sk.size?`(${P.sk.size})`:'';$('#b-sav').classList.toggle('border-violet',F.fav);$('#b-sav').classList.toggle('bg-lila',F.fav)}
+function detail(id){const j=JOBS[id],m=cm(j),done=APP.has(id);
+ $('#dbody').innerHTML=`<div class="flex justify-between items-start gap-4"><div><p class="text-xs font-bold text-violet uppercase tracking-wide">${esc(j.ar)}</p><h3 class="text-2xl font-extrabold leading-tight mt-1">${esc(j.t)}</h3><p class="text-ink/60">${esc(j.co)} · ${esc(j.city)} · ${j.mod}</p></div><button id="dx" class="text-2xl text-ink/40 hover:text-ink" aria-label="Cerrar">✕</button></div>
+ <p class="mt-4 font-extrabold text-xl">${money(j.min)} – ${money(j.max)} <span class="text-sm font-semibold text-ink/50">/ mes</span></p>
+ ${m!==null?`<p class="mt-2 text-sm font-bold text-violet">Compatibilidad con tu perfil: ${m}%</p>`:'<p class="mt-2 text-sm text-ink/50">Agrega habilidades a tu perfil para ver tu compatibilidad.</p>'}
+ <p class="mt-4 leading-relaxed text-ink/80">Únete a ${esc(j.co)} como ${esc(j.t)} (${j.lv}). Liderarás iniciativas de ${esc(j.ar.toLowerCase())} con foco en resultados, trabajando con equipos multidisciplinarios. Buscamos dominio de ${esc(j.s[0])}, ${esc(j.s[1])} y ${esc(j.s[2])}.</p>
+ <div class="flex flex-wrap gap-1.5 mt-4">${j.s.map(s=>`<span class="sk ${P.sk.has(s)?'hit':''}">${esc(s)}</span>`).join('')}</div>
+ ${done?'<p class="mt-6 bg-amber/30 rounded-2xl p-4 font-bold text-sm">Ya te postulaste a esta vacante ✓</p>':`<form id="af" class="mt-6 space-y-3" novalidate><input id="a-n" class="inp" placeholder="Nombre completo" autocomplete="name"><input id="a-e" type="email" class="inp" placeholder="Correo electrónico" autocomplete="email"><p id="a-m" role="alert" class="text-sm font-semibold text-rose-600"></p><button class="w-full bg-violet text-white font-bold py-3 rounded-full hover:bg-ink transition">Enviar postulación</button></form>`}`;
+ $('#dlg').showModal();$('#dx').onclick=()=>$('#dlg').close();
+ const f=$('#af');if(f)f.onsubmit=e=>{e.preventDefault();const n=$('#a-n').value.trim(),m=$('#a-e').value.trim();
+  if(n.length<3||!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)){$('#a-m').textContent='Escribe tu nombre y un correo válido.';return}
+  APP.add(id);draw();$('#dbody').innerHTML=`<div class="text-center py-6"><p class="text-5xl">🎉</p><h3 class="text-2xl font-extrabold mt-3">¡Postulación enviada!</h3><p class="text-ink/70 mt-2">${esc(n.split(' ')[0])}, ${esc(j.co)} revisará tu perfil para <b>${esc(j.t)}</b>. Folio TAL-${Date.now().toString(36).slice(-5).toUpperCase()}.</p><button class="mt-6 bg-ink text-white font-bold px-7 py-3 rounded-full" onclick="document.getElementById('dlg').close()">Seguir explorando</button></div>`}}
+$('#dlg').addEventListener('click',e=>{if(e.target.id==='dlg')e.target.close()});
+$('#q').oninput=e=>{F.q=e.target.value;shown=PAGE;draw()};
+$('#f-city').onchange=e=>{F.city=e.target.value;shown=PAGE;draw()};
+$('#f-sal').oninput=e=>{F.sal=+e.target.value;shown=PAGE;draw()};
+$('#f-day').onchange=e=>{F.days=+e.target.value;shown=PAGE;draw()};
+$('#sort').onchange=e=>{F.sort=e.target.value;draw()};
+$('#more').onclick=()=>{shown+=PAGE;draw()};
+$('#b-sav').onclick=()=>{F.fav=!F.fav;shown=PAGE;draw()};
+$('#p-lvl').onchange=e=>{P.lvl=e.target.value;draw()};
+$('#p-clr').onclick=()=>{P.sk.clear();document.querySelectorAll('[data-sk]').forEach(b=>b.setAttribute('aria-pressed','false'));draw()};
+$('#p-sk').onclick=e=>{const b=e.target.closest('[data-sk]');if(!b)return;const k=b.dataset.sk;P.sk.has(k)?P.sk.delete(k):P.sk.add(k);b.setAttribute('aria-pressed',P.sk.has(k));draw()};
+$('#f-clr').onclick=()=>{F.q='';F.areas.clear();F.mods.clear();F.lvls.clear();F.city='';F.sal=20000;F.days=0;F.fav=false;$('#q').value='';$('#f-city').value='';$('#f-sal').value=20000;$('#f-day').value=0;document.querySelectorAll('#f-area input,#f-mod input,#f-lvl input').forEach(i=>i.checked=false);shown=PAGE;draw()};
+$('#grid').onclick=e=>{const s=e.target.closest('[data-sav]'),o=e.target.closest('[data-open]');
+ if(s){const id=+s.dataset.sav;SAV.has(id)?SAV.delete(id):SAV.add(id);draw()}else if(o)detail(+o.dataset.open)};
+draw();
+</script>
+<script data-preview-protection>
+document.querySelectorAll('form').forEach(function(form){form.addEventListener('submit',function(event){event.preventDefault();var note=form.querySelector('.preview-form-status');if(!note){note=document.createElement('div');note.className='preview-form-status';note.setAttribute('role','status');note.textContent='Vista de demostración: no se envió información.';form.appendChild(note);}});});
+</script>
+</body>
+</html>

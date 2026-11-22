@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tinta Viva Studio — Branding con carácter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{crema:'#F2EFE9',tinta:'#1A1A1A',pink:'#FF3EA5',sol:'#FFD60A'},fontFamily:{sans:['"Space Grotesk"','system-ui','sans-serif'],display:['"Archivo Black"','Impact','sans-serif']}}}}</script>
+<style>
+.bd{border:3px solid #1A1A1A}
+.sh{box-shadow:6px 6px 0 #1A1A1A}.sh-s{box-shadow:4px 4px 0 #1A1A1A}
+.press{transition:transform .1s,box-shadow .1s}.press:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #1A1A1A}.press:active{transform:translate(4px,4px);box-shadow:0 0 0 #1A1A1A}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}.mq{animation:mq 22s linear infinite;width:max-content}
+@media (prefers-reduced-motion:reduce){.mq{animation:none}}
+.svc input.cb{appearance:none;width:28px;height:28px;border:3px solid #1A1A1A;background:#fff;cursor:pointer;display:grid;place-content:center;flex-shrink:0}
+.svc input.cb:checked{background:#FF3EA5}.svc input.cb:checked::after{content:'✓';font-weight:800;color:#1A1A1A;font-size:18px;line-height:1}
+.seg button{border:3px solid #1A1A1A;padding:.5rem 1rem;font-weight:700;background:#fff;margin-right:-3px}
+.seg button[aria-pressed=true]{background:#FFD60A}
+.fld{width:100%;border:3px solid #1A1A1A;padding:.65rem .8rem;background:#fff;font:inherit;outline:none}.fld:focus{background:#FFF9C4}
+.qb{width:34px;height:34px;border:3px solid #1A1A1A;background:#fff;font-weight:800}.qb:hover{background:#FFD60A}
+</style>
+<style>
+.preview-ribbon{position:relative;z-index:9999;background:#211719;color:#fff4e8;border-bottom:1px solid rgba(255,255,255,.18);padding:9px 18px;text-align:center;font:600 11px/1.4 system-ui,sans-serif;letter-spacing:.04em}
+.preview-ribbon strong{color:#ffc39e}
+.preview-form-status{margin:12px 0 0;padding:12px 14px;border-radius:10px;background:#fff4dc;color:#382719;font:600 13px/1.5 system-ui,sans-serif}
+</style>
+</head>
+<body class="bg-crema text-tinta font-sans antialiased">
+<div class="preview-ribbon"><strong>VISTA DE PRUEBA</strong> · Prototipo visual; los formularios no envían información.</div>
+<header class="bg-sol border-b-[3px] border-tinta sticky top-0 z-30">
+  <div class="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display text-2xl tracking-tight flex items-center gap-2"><span class="w-8 h-8 bd bg-pink rounded-full inline-block"></span>TINTA VIVA</a>
+    <nav class="hidden md:flex gap-6 font-bold text-sm"><a class="hover:underline" href="#cotizador">Cotizador</a><a class="hover:underline" href="#casos">Casos</a><a class="hover:underline" href="#estudio">Estudio</a></nav>
+    <a href="#cotizador" class="bd bg-tinta text-white font-bold text-sm px-4 py-2 sh-s press">Cotiza ya →</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="mx-auto max-w-7xl px-5 pt-12 md:pt-20 pb-12">
+  <p class="inline-block bd bg-white px-3 py-1 font-bold text-sm -rotate-2">Estudio de branding · MX</p>
+  <h1 class="font-display text-[clamp(2.8rem,10vw,9rem)] leading-[.92] tracking-tight mt-5">Hacemos que tu marca <span class="bg-pink px-3 inline-block -rotate-1 bd">se note.</span></h1>
+  <p class="mt-6 text-lg md:text-xl max-w-2xl">Identidad, web, empaques y campañas con ideas fuertes y precios claros. Arma tu paquete y obtén tu cotización al instante.</p>
+  <div class="mt-8 flex flex-wrap gap-4"><a href="#cotizador" class="bd bg-pink font-bold px-7 py-4 sh press">Armar mi cotización</a><a href="#casos" class="bd bg-white font-bold px-7 py-4 sh press">Ver casos</a></div>
+</section>
+<div class="bg-tinta text-sol border-y-[3px] border-tinta py-3 overflow-hidden" aria-hidden="true"><div class="mq flex gap-10 font-display text-2xl whitespace-nowrap"><span>IDENTIDAD ✺ WEB ✺ EMPAQUES ✺ SOCIAL ✺ CAMPAÑAS ✺ NAMING ✺ VIDEO ✺ FOTO ✺</span><span>IDENTIDAD ✺ WEB ✺ EMPAQUES ✺ SOCIAL ✺ CAMPAÑAS ✺ NAMING ✺ VIDEO ✺ FOTO ✺</span></div></div>
+
+<section id="cotizador" class="mx-auto max-w-7xl px-5 py-16">
+  <h2 class="font-display text-4xl md:text-6xl tracking-tight">Cotizador <span class="text-pink">instantáneo</span></h2>
+  <p class="mt-2 max-w-2xl">Elige servicios, ajusta cantidades y nivel de complejidad. El total y el tiempo de entrega se actualizan solos.</p>
+  <div class="grid lg:grid-cols-[1fr_390px] gap-8 mt-10 items-start">
+    <div>
+      <div id="svcs" class="grid md:grid-cols-2 gap-5"></div>
+      <div class="grid md:grid-cols-2 gap-5 mt-8">
+        <div class="bd bg-white p-5 sh-s"><p class="font-bold mb-2">Complejidad</p><div class="seg" id="o-cx"></div><p id="cx-d" class="text-sm mt-3 text-tinta/70"></p></div>
+        <div class="bd bg-white p-5 sh-s"><p class="font-bold mb-2">Entrega</p><div class="seg" id="o-ex"></div><p class="text-sm mt-3 text-tinta/70">Express: +25% y tiempos ~40% más cortos.</p></div>
+        <div class="bd bg-white p-5 sh-s"><p class="font-bold mb-2">Rondas de revisión extra</p><div class="flex items-center gap-3"><button class="qb" data-rv="-1" aria-label="Menos">−</button><b id="rv" class="text-2xl w-8 text-center">0</b><button class="qb" data-rv="1" aria-label="Más">+</button></div><p class="text-sm mt-3 text-tinta/70">Incluimos 2 rondas. Cada extra suma 4%.</p></div>
+        <div class="bd bg-white p-5 sh-s"><label class="flex items-start gap-3 cursor-pointer svc"><input id="ret" type="checkbox" class="cb mt-0.5"><span><b>Soporte mensual de marca</b><br><span class="text-sm text-tinta/70">Retainer opcional: $6,500 / mes (se factura aparte).</span></span></label></div>
+      </div>
+    </div>
+    <aside class="lg:sticky lg:top-24">
+      <div class="bd bg-white sh p-6">
+        <div class="flex justify-between items-baseline"><h3 class="font-display text-2xl">Tu cotización</h3><span id="nsv" class="text-sm font-bold bg-sol bd px-2"></span></div>
+        <div id="lines" class="mt-4 space-y-2 text-sm"></div>
+        <div class="border-t-[3px] border-dashed border-tinta mt-4 pt-4 space-y-1 text-sm" id="tot"></div>
+        <div class="bd bg-pink mt-4 p-4"><p class="text-xs font-bold uppercase">Total con IVA</p><p id="grand" class="font-display text-4xl leading-none mt-1"></p></div>
+        <div class="grid grid-cols-2 gap-3 mt-4 text-sm"><div class="bd bg-crema p-3"><p class="text-xs font-bold uppercase">Anticipo 50%</p><p id="adv" class="font-bold"></p></div><div class="bd bg-crema p-3"><p class="text-xs font-bold uppercase">Entrega</p><p id="wks" class="font-bold"></p></div></div>
+        <div class="flex gap-3 mt-5"><button id="cp" class="flex-1 bd bg-sol font-bold py-3 sh-s press">Copiar</button><button id="rq" class="flex-1 bd bg-tinta text-white font-bold py-3 sh-s press">Solicitar propuesta</button></div>
+        <form id="frm" class="hidden mt-5 space-y-3" novalidate><input id="f-n" class="fld" placeholder="Nombre o marca" autocomplete="name"><input id="f-e" type="email" class="fld" placeholder="Correo" autocomplete="email"><button class="w-full bd bg-pink font-bold py-3 sh-s press">Enviar</button></form>
+        <p id="msg" role="status" class="mt-3 text-sm font-bold"></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="casos" class="mx-auto max-w-7xl px-5 py-16">
+  <h2 class="font-display text-4xl md:text-6xl tracking-tight">Casos con <span class="bg-sol px-2 bd inline-block rotate-1">ruido</span></h2>
+  <div class="grid md:grid-cols-3 gap-6 mt-10">
+    <article class="bd bg-pink sh p-7 min-h-[260px] flex flex-col justify-between press"><p class="font-bold text-sm">Gastronomía · Identidad + Empaque</p><div><h3 class="font-display text-3xl leading-tight">Café Ñoño</h3><p class="mt-2 text-sm">Ventas en tienda +46% tras el relanzamiento.</p></div></article>
+    <article class="bd bg-sol sh p-7 min-h-[260px] flex flex-col justify-between press"><p class="font-bold text-sm">Logística · Web + Campaña</p><div><h3 class="font-display text-3xl leading-tight">Mudanzas Rayo</h3><p class="mt-2 text-sm">3× más solicitudes de cotización en 90 días.</p></div></article>
+    <article class="bd bg-tinta text-crema sh p-7 min-h-[260px] flex flex-col justify-between press"><p class="font-bold text-sm text-sol">Alimentos · Naming + Social</p><div><h3 class="font-display text-3xl leading-tight">Aceites Sol y Sal</h3><p class="mt-2 text-sm">Comunidad de 40 mil seguidores en 6 meses.</p></div></article>
+  </div>
+  <p class="text-xs mt-3 text-tinta/55">Casos y cifras ilustrativos de este sitio de demostración.</p>
+</section>
+
+<section id="estudio" class="bg-pink border-y-[3px] border-tinta">
+  <div class="mx-auto max-w-7xl px-5 py-16 grid md:grid-cols-2 gap-10 items-center">
+    <h2 class="font-display text-4xl md:text-6xl tracking-tight leading-[.98]">Ideas fuertes. Cero relleno.</h2>
+    <p class="text-lg">Somos un estudio pequeño, directo y con opiniones. Trabajamos con pocas marcas a la vez para que cada proyecto reciba atención de principio a fin: estrategia, diseño y ejecución bajo el mismo techo.</p>
+  </div>
+</section>
+</main>
+<footer class="bg-tinta text-crema"><div class="mx-auto max-w-7xl px-5 py-10 flex flex-wrap justify-between gap-4 text-sm"><span class="font-display text-xl text-sol">TINTA VIVA STUDIO</span><span>hola@tintaviva.example · © <span id="yr"></span> · Sitio de demostración con marca ficticia</span></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$('#yr').textContent=new Date().getFullYear();
+const M=n=>n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0});
+const SV=[
+ {id:'id',n:'Identidad de marca',d:'Logo, paleta, tipografía y manual de uso.',b:18000,u:0,wk:3},
+ {id:'web',n:'Sitio web',d:'Diseño y desarrollo responsivo a la medida.',b:15000,u:2500,ql:'páginas',q:[1,20,5],wk:2,wu:.25},
+ {id:'pk',n:'Packaging',d:'Diseño de empaque y etiquetas listas para imprenta.',b:6000,u:4500,ql:'SKUs',q:[1,15,2],wk:2,wu:.4},
+ {id:'so',n:'Kit de redes sociales',d:'Plantillas y piezas para tu feed y stories.',b:5000,u:450,ql:'piezas',q:[5,60,15],wk:1,wu:.05},
+ {id:'ca',n:'Campaña publicitaria',d:'Concepto, creatividades y adaptaciones.',b:22000,u:6000,ql:'canales',q:[1,6,2],wk:3,wu:.3},
+ {id:'fo',n:'Fotografía de producto',d:'Sesión en estudio con edición profesional.',b:0,u:9500,ql:'sesiones',q:[1,6,1],wk:1,wu:.3},
+ {id:'vi',n:'Video / Reels',d:'Guion, grabación y edición de piezas cortas.',b:0,u:12000,ql:'piezas',q:[1,10,2],wk:2,wu:.4},
+ {id:'na',n:'Naming + copywriting',d:'Nombre, claim y voz de marca.',b:12000,u:0,wk:1.5}];
+const CX=[{n:'Esencial',m:1,d:'Alcance directo, 1 propuesta inicial.'},{n:'Pro',m:1.35,d:'2 propuestas, investigación y refinamiento.'},{n:'Premium',m:1.8,d:'3 propuestas, estrategia profunda y acompañamiento.'}];
+const S={on:{},q:{},cx:1,ex:0,rv:0,ret:false};SV.forEach(s=>{S.on[s.id]=s.id==='id'||s.id==='web';if(s.q)S.q[s.id]=s.q[2]});
+$('#svcs').innerHTML=SV.map(s=>`<div class="svc bd bg-white p-5 sh-s"><label class="flex gap-3 cursor-pointer"><input type="checkbox" class="cb mt-0.5" data-id="${s.id}" ${S.on[s.id]?'checked':''}><span><b class="text-lg leading-tight">${s.n}</b><br><span class="text-sm text-tinta/70">${s.d}</span></span></label>
+ <div class="mt-3 flex items-center justify-between"><span class="text-sm font-bold bg-sol bd px-2">${s.b?'desde '+M(s.b):M(s.u)+' c/u'}</span>${s.q?`<div class="flex items-center gap-2"><button class="qb" data-q="${s.id}" data-d="-1" aria-label="Menos ${s.ql}">−</button><span class="w-20 text-center text-sm"><b data-qv="${s.id}">${S.q[s.id]}</b> ${s.ql}</span><button class="qb" data-q="${s.id}" data-d="1" aria-label="Más ${s.ql}">+</button></div>`:''}</div></div>`).join('');
+$('#o-cx').innerHTML=CX.map((c,i)=>`<button type="button" data-cx="${i}" aria-pressed="${i===S.cx}">${c.n}</button>`).join('');
+$('#o-ex').innerHTML=['Normal','Express'].map((c,i)=>`<button type="button" data-ex="${i}" aria-pressed="${i===S.ex}">${c}</button>`).join('');
+let R;
+function calc(){
+ const act=SV.filter(s=>S.on[s.id]),cx=CX[S.cx].m;
+ const lines=act.map(s=>{const q=S.q[s.id]||0;return{n:s.n+(s.q?` (${q} ${s.ql})`:''),v:(s.b+s.u*q)*cx,w:s.wk+(s.wu||0)*q}});
+ const sub=lines.reduce((a,l)=>a+l.v,0),ex=S.ex?sub*.25:0,rv=sub*.04*S.rv,bruto=sub+ex+rv,dp=act.length>=5?.15:act.length>=3?.10:act.length>=2?.05:0,dsc=bruto*dp,neto=bruto-dsc,iva=neto*.16,total=neto+iva;
+ const ws=lines.map(l=>l.w),mxw=Math.max(0,...ws),sw=ws.reduce((a,b)=>a+b,0);let w=act.length?mxw+.4*(sw-mxw):0;if(S.ex)w*=.6;w=Math.max(1,Math.ceil(w));
+ return{act,lines,sub,ex,rv,dp,dsc,neto,iva,total,w}}
+function ui(){
+ const r=R=calc();
+ $('#nsv').textContent=r.act.length+' servicio'+(r.act.length===1?'':'s');
+ $('#lines').innerHTML=r.lines.length?r.lines.map(l=>`<div class="flex justify-between gap-3"><span>${l.n}</span><b>${M(l.v)}</b></div>`).join(''):'<p class="text-tinta/60">Selecciona al menos un servicio.</p>';
+ const row=(a,b,c='')=>`<div class="flex justify-between ${c}"><span>${a}</span><b>${b}</b></div>`;
+ $('#tot').innerHTML=row('Subtotal',M(r.sub))+(r.ex?row('Entrega express (+25%)',M(r.ex)):'')+(r.rv?row(`Revisiones extra (${S.rv})`,M(r.rv)):'')+(r.dsc?row(`Descuento por paquete (${r.dp*100}%)`,'−'+M(r.dsc),'text-pink'):'')+row('IVA (16%)',M(r.iva));
+ $('#grand').textContent=M(r.total);$('#adv').textContent=M(r.total/2);$('#wks').textContent=r.act.length?`${r.w}–${r.w+1} semanas`:'—';
+ $('#cx-d').textContent=CX[S.cx].d;$('#rv').textContent=S.rv;
+ $$('[data-qv]').forEach(e=>e.textContent=S.q[e.dataset.qv]);
+ $$('[data-cx]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.cx===S.cx));$$('[data-ex]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.ex===S.ex));
+ $('#msg').textContent='';
+}
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+ if(t.dataset.q){const s=SV.find(x=>x.id===t.dataset.q),[mn,mx,st]=s.q;S.q[s.id]=Math.min(mx,Math.max(mn,S.q[s.id]+(+t.dataset.d)*st));if(!S.on[s.id])S.on[s.id]=true,document.querySelector(`[data-id=${s.id}]`).checked=true;ui()}
+ else if(t.dataset.cx!==undefined){S.cx=+t.dataset.cx;ui()}else if(t.dataset.ex!==undefined){S.ex=+t.dataset.ex;ui()}
+ else if(t.dataset.rv){S.rv=Math.min(5,Math.max(0,S.rv+ +t.dataset.rv));ui()}});
+document.addEventListener('change',e=>{if(e.target.dataset.id){S.on[e.target.dataset.id]=e.target.checked;ui()}else if(e.target.id==='ret'){S.ret=e.target.checked}});
+function text(){const r=R;return['TINTA VIVA STUDIO — Cotización','',...r.lines.map(l=>`• ${l.n}: ${M(l.v)}`),'',`Complejidad: ${CX[S.cx].n} · Entrega: ${S.ex?'Express':'Normal'}`,`Subtotal: ${M(r.sub)}`,r.ex?`Express: ${M(r.ex)}`:'',r.rv?`Revisiones extra: ${M(r.rv)}`:'',r.dsc?`Descuento: −${M(r.dsc)}`:'',`IVA: ${M(r.iva)}`,`TOTAL: ${M(r.total)}`,`Anticipo 50%: ${M(r.total/2)}`,`Entrega estimada: ${r.w}–${r.w+1} semanas`,S.ret?'Soporte mensual: $6,500 / mes (aparte)':''].filter(x=>x!==''||0).join('\n')}
+$('#cp').onclick=e=>{if(!R.act.length)return;const b=e.target,t=text(),ok=()=>{b.textContent='¡Copiado!';setTimeout(()=>b.textContent='Copiar',2000)};
+ const fb=()=>{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(x){}a.remove()};
+ navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t).then(ok,fb):fb()};
+$('#rq').onclick=()=>{if(!R.act.length){$('#msg').textContent='Selecciona al menos un servicio.';return}$('#frm').classList.toggle('hidden')};
+$('#frm').addEventListener('submit',e=>{e.preventDefault();const n=$('#f-n').value.trim(),m=$('#f-e').value.trim(),o=$('#msg');
+ if(n.length<2||!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)){o.textContent='Escribe tu nombre y un correo válido.';return}
+ o.textContent=`¡Listo, ${n.split(' ')[0]}! Folio TV-${Date.now().toString(36).slice(-5).toUpperCase()}. Te enviaremos la propuesta formal por $${Math.round(R.total).toLocaleString('es-MX')} a ${m}.`;e.target.reset();e.target.classList.add('hidden')});
+ui();
+</script>
+<script data-preview-protection>
+document.querySelectorAll('form').forEach(function(form){form.addEventListener('submit',function(event){event.preventDefault();var note=form.querySelector('.preview-form-status');if(!note){note=document.createElement('div');note.className='preview-form-status';note.setAttribute('role','status');note.textContent='Vista de demostración: no se envió información.';form.appendChild(note);}});});
+</script>
+</body>
+</html>
